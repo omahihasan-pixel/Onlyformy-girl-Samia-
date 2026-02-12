@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Valentine 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--pink:#ff4d88;
+--soft:#fff0f6;
+--dark:#b30059;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
+
+body{
+font-family:'Quicksand',sans-serif;
+background:linear-gradient(135deg,#fff0f6,#ffe6f0);
+color:#5a2a3a;
+overflow-x:hidden;
+text-align:center;
+}
+
+section{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:20px;
+position:relative;
+}
+
+/* Dramatic Glow */
+.glow{
+font-family:'Great Vibes',cursive;
+font-size:3.5rem;
+color:var(--dark);
+animation:romanticGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes romanticGlow{
+from{text-shadow:0 0 10px #fff,0 0 20px #ff99cc;}
+to{text-shadow:0 0 25px #ff4d88,0 0 50px #ff1a75;}
+}
+
+p{max-width:650px;line-height:1.7;margin-top:20px;font-size:1.1rem;}
+
+.btn{
+margin-top:30px;
+padding:12px 35px;
+border:none;
+border-radius:30px;
+background:var(--pink);
+color:white;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+box-shadow:0 5px 20px rgba(255,0,102,0.4);
+}
+
+.btn:hover{
+transform:scale(1.1);
+background:var(--dark);
+}
+
+/* Music Button */
+.music-control{
+position:fixed;
+bottom:20px;
+right:20px;
+background:white;
+border-radius:50%;
+width:55px;
+height:55px;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+box-shadow:0 5px 20px rgba(0,0,0,0.2);
+font-size:22px;
+z-index:1000;
+}
+
+/* Floating Hearts */
+.heart{
+position:fixed;
+bottom:-10px;
+font-size:20px;
+animation:floatUp 8s linear infinite;
+opacity:.6;
+}
+
+@keyframes floatUp{
+0%{transform:translateY(0) scale(1);opacity:0;}
+10%{opacity:.7;}
+100%{transform:translateY(-110vh) scale(1.5);opacity:0;}
+}
+
+/* Question Box */
+.question-box{
+background:white;
+padding:50px;
+border-radius:30px;
+box-shadow:0 20px 50px rgba(0,0,0,0.1);
+}
+
+.btn-group{
+margin-top:30px;
+display:flex;
+gap:20px;
+justify-content:center;
+}
+
+.btn-yes{
+background:var(--dark);
+color:white;
+border:none;
+padding:12px 30px;
+border-radius:25px;
+cursor:pointer;
+}
+
+.btn-no{
+background:#ffd6e7;
+border:none;
+padding:10px 25px;
+border-radius:25px;
+cursor:pointer;
+}
+
+/* Celebration */
+#celebration{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:radial-gradient(circle,#fff0f6,#ffcce6);
+flex-direction:column;
+justify-content:center;
+align-items:center;
+z-index:200;
+animation:fadeIn 1s ease;
+}
+
+@keyframes fadeIn{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+.cele-text{
+margin-top:20px;
+font-size:1.2rem;
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bgMusic" loop>
+<source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<div class="music-control" onclick="toggleMusic()" id="musicBtn">🎵</div>
+
+<!-- Section 1 -->
+<section>
+<h1 class="glow">Happy Kiss Day, My Moyna 💋</h1>
+<p>
+Samia… My Babbui…  
+If I was with you right now,  
+I’d gently hold your face, look into your eyes…  
+and steal the softest kiss ever.  
+Not just a kiss… but a promise that I’m yours. Always.
+</p>
+<button class="btn" onclick="scrollToLove()">Read More 💌</button>
+</section>
+
+<!-- Section 2 -->
+<section id="love">
+<h1 class="glow" style="font-size:3rem;">For My Babbui 💕</h1>
+<p>
+If I could kiss you right now, it would carry every unsaid feeling in my heart.  
+It would say I choose you — in every lifetime, in every version of us.  
+You are my calm in chaos, my warmth in distance, my safest place.  
+Even when you’re far, I feel you close.  
+And until I can hold you again…  
+remember this — I love you deeply, endlessly, completely.
+</p>
+<button class="btn" onclick="scrollToQuestion()">One More Thing...</button>
+</section>
+
+<!-- Section 3 -->
+<section id="question">
+<div class="question-box">
+<h2 style="font-family:'Great Vibes',cursive;font-size:2.8rem;color:var(--dark);">
+Will you be my Valentine?
+</h2>
+<div class="btn-group">
+<button class="btn-yes" onclick="showCelebration()">YES, obviously!</button>
+<button class="btn-no" id="noBtn">No</button>
+</div>
+</div>
+</section>
+
+<!-- Celebration -->
+<section id="celebration">
+<h1 class="glow">YAY! 🎉</h1>
+<h2>Valentine’s Date Confirmed 💍</h2>
+<div class="cele-text">
+<p><strong>When:</strong> Whenever you want jaanemann</p>
+<p><strong>Where:</strong> Our favorite spot</p>
+<p style="margin-top:20px;">I like me better when I'm with you! 💖</p>
+</div>
+</section>
+
+<script>
+function scrollToLove(){
+document.getElementById("love").scrollIntoView({behavior:"smooth"});
+}
+function scrollToQuestion(){
+document.getElementById("question").scrollIntoView({behavior:"smooth"});
+}
+
+function toggleMusic(){
+const music=document.getElementById("bgMusic");
+const btn=document.getElementById("musicBtn");
+if(music.paused){
+music.play();
+btn.innerHTML="⏸️";
+}else{
+music.pause();
+btn.innerHTML="🎵";
+}
+}
+
+/* Running No Button */
+const noBtn=document.getElementById("noBtn");
+noBtn.addEventListener("mouseover",()=>{
+const x=Math.random()*(window.innerWidth-noBtn.offsetWidth);
+const y=Math.random()*(window.innerHeight-noBtn.offsetHeight);
+noBtn.style.position="fixed";
+noBtn.style.left=x+"px";
+noBtn.style.top=y+"px";
+});
+
+/* Celebration */
+function showCelebration(){
+document.getElementById("celebration").style.display="flex";
+}
+
+/* Floating hearts auto */
+setInterval(()=>{
+const heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="💖";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(Math.random()*20+15)+"px";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),8000);
+},500);
+</script>
+
+</body>
+</html>
